@@ -9,8 +9,8 @@ import {convertTime, convertWindDir} from "./utilities";
 function App() {
   const appID = '8e1eecd6fc68b8490908497ecf8ca301';
   const cities = [];
-  // eslint-disable-next-line no-undef
-  const [id, setId] =useState(0);
+  const [id, setId] = useState(0);
+
 
   const gettingWeather = async (e) => {
     e.preventDefault();
@@ -26,9 +26,10 @@ function App() {
         'windForce': Math.round(data.wind.speed),
         'windDirection': convertWindDir(data.wind.deg),
         'time': convertTime(new Date()),
-        'id': id
+        'id': id,
       }));
-      setId(id + 1)
+    setId(Math.round(Math.random()*100000));
+
     }
   };
 
