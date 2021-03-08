@@ -48,7 +48,7 @@ function App() {
       <div>
         <Form weather={gettingWeather}/>
       </div>
-      <CitySearch/>
+
       <div className='cities-container'>
         {cities.map(city =>
         <CityInfo
@@ -64,6 +64,7 @@ function App() {
         />
         )}
       </div>
+      <CitySearch weather={gettingWeather}/>
     </div>
   );
 }

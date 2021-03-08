@@ -6,33 +6,37 @@ import {
   getLatLng,
 } from 'react-places-autocomplete';
 
-function CitySearch () {
+function CitySearch (weather) {
   const [address, setAddress] =  React.useState("");
-  const handleSelect = async value =>{};
+  // const handleSelect = async value =>{};
 
   return (
     <div>
-      <PlacesAutocomplete
-        value={address}
-        onChange={setAddress}
-        onSelect={handleSelect}
-      >
-      {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-        <div>
-          <input {...getInputProps({
-            placeholder: 'Type address'
-          })}
-          />
+      <form onSubmit={weather}>
+        <PlacesAutocomplete
+          value={address}
+          onChange={setAddress}
+          // onSelect={handleSelect}
+
+        >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-            {loading ? <div>...loading</div> : null}
-            {suggestions.map((suggestion) => {
-              return <div>{suggestion.description}</div>
+            <input {...getInputProps({
+              placeholder: 'Type address'
             })}
+            />
+            <div>
+              {loading ? <div>...loading</div> : null}
+              {suggestions.map((suggestion) => {
+                return <div>{suggestion.description}</div>
+              })}
+            </div>
+
           </div>
-          <button className='form-button' type='submit'>Получить погоду</button>
-        </div>
-      )}
-    </PlacesAutocomplete>
+        )}
+      </PlacesAutocomplete>
+        <button className='form-button'  type='submit'>Получить погоду</button>
+      </form>
     </div>
   );
 }
