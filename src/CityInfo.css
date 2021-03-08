@@ -1,7 +1,7 @@
 .cityInfo-container{
   border: 1px solid #282c34;
-  width: 350px;
-  margin: 3em 2em;
+  width: 390px;
+  margin: 2em 1em;
   padding: 1em;
   display: flex;
   flex-direction: column;
@@ -15,6 +15,7 @@
 }
 .city-title{
   margin: 0;
+  text-transform: capitalize;
 }
 
 .button{

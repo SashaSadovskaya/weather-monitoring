@@ -1,13 +1,14 @@
 import './App.css';
 import Form from './Form'
 import CityInfo from "./CityInfo";
-import React, {useState} from 'react';
-import {convertWindDir} from "./utilities";
+import React, {useEffect} from 'react';
+import {convertTime, convertWindDir} from "./utilities";
+
 
 function App() {
   const appID = '8e1eecd6fc68b8490908497ecf8ca301';
+  const cities = [];
 
-  const [cities, setCities] = useState([]);
 
 
   const gettingWeather = async (e) => {
@@ -26,30 +27,27 @@ function App() {
         'pressure': data.main.pressure,
         'windForce': Math.round(data.wind.speed),
         'windDirection': convertWindDir(data.wind.deg),
-        'time': new Date()
+        'time': convertTime(new Date())
       }));
     }
-    for (let key in localStorage) {
-      if (!localStorage.hasOwnProperty(key)) {
-        continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
-      }
-
-      cities.push(
-          JSON.parse(localStorage.getItem(key))
-      );
-
-    }
-    setCities(cities);
-    console.log(cities); // тут выводится массив объектов
   };
 
-  console.log(cities); // тут выводится пустой массив
+  for (let key in localStorage) {
+    if (!localStorage.hasOwnProperty(key)) {
+      continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+    }
+
+    cities.push(
+      JSON.parse(localStorage.getItem(key))
+    );
+  }
+
   return (
     <div className="App">
       <div>
         <Form weather={gettingWeather}/>
       </div>
-      <div>
+      <div className='cities-container'>
         {cities.map(city =>
         <CityInfo
                   city={city}
@@ -58,8 +56,9 @@ function App() {
                   humidity={city.humidity}
                   windForce={city.windForce}
                   windDirection={city.windDirection}
-        >
-        </CityInfo>)}
+                  time={city.time}
+        />
+        )}
       </div>
     </div>
   );
