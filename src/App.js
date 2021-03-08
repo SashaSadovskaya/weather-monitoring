@@ -59,6 +59,7 @@ function App() {
                   windForce={city.windForce}
                   windDirection={city.windDirection}
                   time={city.time}
+                  setId={setId}
         />
         )}
       </div>

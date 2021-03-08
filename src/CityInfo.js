@@ -1,10 +1,12 @@
 import React from "react";
 import './CityInfo.css'
 
-const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, time}) => {
+const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, time, setId}) => {
 
   const deleteCity = () => {
-    localStorage.removeItem(city.city)
+    localStorage.removeItem(city.city);
+    // eslint-disable-next-line no-undef
+    setId(Math.round(Math.random()*100000));
   };
 
   const updateCity = () => {
