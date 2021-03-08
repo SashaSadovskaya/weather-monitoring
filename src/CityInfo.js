@@ -5,7 +5,6 @@ const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, ti
 
   const deleteCity = () => {
     localStorage.removeItem(city.city);
-    // eslint-disable-next-line no-undef
     setId(Math.round(Math.random()*100000));
   };
 

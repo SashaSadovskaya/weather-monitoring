@@ -3,7 +3,7 @@ import Form from './Form'
 import CityInfo from "./CityInfo";
 import React, {useState} from 'react';
 import {convertTime, convertWindDir} from "./utilities";
-
+import CitySearch from "./CitySearch";
 
 
 function App() {
@@ -48,6 +48,7 @@ function App() {
       <div>
         <Form weather={gettingWeather}/>
       </div>
+      <CitySearch/>
       <div className='cities-container'>
         {cities.map(city =>
         <CityInfo
