@@ -1,24 +1,22 @@
 import './App.css';
 import Form from './Form'
 import CityInfo from "./CityInfo";
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {convertTime, convertWindDir} from "./utilities";
+
 
 
 function App() {
   const appID = '8e1eecd6fc68b8490908497ecf8ca301';
   const cities = [];
-
-
+  // eslint-disable-next-line no-undef
+  const [id, setId] =useState(0);
 
   const gettingWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
-
-
     const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&appid=${appID}&units=metric`);
     const data = await url.json();
-    console.log(data);
     if (city){
       localStorage.setItem(city,JSON.stringify({
         'city': city,
@@ -27,14 +25,16 @@ function App() {
         'pressure': data.main.pressure,
         'windForce': Math.round(data.wind.speed),
         'windDirection': convertWindDir(data.wind.deg),
-        'time': convertTime(new Date())
+        'time': convertTime(new Date()),
+        'id': id
       }));
+      setId(id + 1)
     }
   };
 
   for (let key in localStorage) {
     if (!localStorage.hasOwnProperty(key)) {
-      continue; // пропустит такие ключи, как "setItem", "getItem" и так далее
+      continue;
     }
 
     cities.push(
@@ -50,6 +50,7 @@ function App() {
       <div className='cities-container'>
         {cities.map(city =>
         <CityInfo
+                  key ={city.id}
                   city={city}
                   temp={city.temp}
                   pressure={city.pressure}
