@@ -21,7 +21,7 @@ function CitySearch ({weather}) {
         >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div>
-            <input {...getInputProps({
+            <input type='text' name='city'  {...getInputProps({
               placeholder: 'Type address'
             })}
             />

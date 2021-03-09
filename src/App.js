@@ -1,5 +1,4 @@
 import './App.css';
-import Form from './Form'
 import CityInfo from "./CityInfo";
 import React, {useState} from 'react';
 import {convertTime, convertWindDir} from "./utilities";
@@ -46,7 +45,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Form weather={gettingWeather}/>
+        <CitySearch weather={gettingWeather}/>
       </div>
 
       <div className='cities-container'>
@@ -64,7 +63,6 @@ function App() {
         />
         )}
       </div>
-      <CitySearch weather={gettingWeather}/>
     </div>
   );
 }
