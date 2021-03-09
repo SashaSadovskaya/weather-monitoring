@@ -28,7 +28,9 @@ function App() {
         'id': id,
       }));
     setId(Math.round(Math.random()*100000));
-
+    }
+    else {
+      alert('Погода для этого города не найдна')
     }
   };
 

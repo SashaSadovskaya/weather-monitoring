@@ -1,28 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import {
-  geocodeByAddress,
-  geocodeByPlaceId,
-  getLatLng,
-} from 'react-places-autocomplete';
+import './CitySearch.css'
 
 function CitySearch ({weather}) {
   const [address, setAddress] =  React.useState("");
-  // const handleSelect = async value =>{};
 
   return (
     <div>
-      <form onSubmit={weather}>
+      <form onSubmit={weather} className='form'>
         <PlacesAutocomplete
           value={address}
           onChange={setAddress}
-          // onSelect={handleSelect}
-
         >
-        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+        {({ getInputProps, suggestions, loading }) => (
           <div>
             <input type='text' name='city'  {...getInputProps({
-              placeholder: 'Type address'
+              placeholder: 'Введите город'
             })}
             />
             <div>
@@ -31,11 +24,10 @@ function CitySearch ({weather}) {
                 return <div key={i}>{suggestion.description}</div>
               })}
             </div>
-
           </div>
         )}
       </PlacesAutocomplete>
-        <button className='form-button'  type='submit'>Получить погоду</button>
+      <button className='form-button'  type='submit'>Получить погоду</button>
       </form>
     </div>
   );
