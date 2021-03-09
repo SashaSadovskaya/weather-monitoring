@@ -1,5 +1,6 @@
 import React from "react";
 import './CityInfo.css'
+import {convertTime} from "./utilities";
 
 const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, time, setId}) => {
 
@@ -9,7 +10,16 @@ const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, ti
   };
 
   const updateCity = () => {
-    console.log('updating')
+    localStorage.setItem(city.city, JSON.stringify({
+      'city': city.city,
+      'temp': temp,
+      'humidity': humidity,
+      'pressure': pressure,
+      'windForce': windForce,
+      'windDirection': windDirection,
+      'time': convertTime(new Date())
+    }));
+    setId(Math.round(Math.random()*100000));
   };
 
   return (

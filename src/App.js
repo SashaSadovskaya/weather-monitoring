@@ -50,9 +50,9 @@ function App() {
       </div>
 
       <div className='cities-container'>
-        {cities.map(city =>
+        {cities.map((city, i) =>
         <CityInfo
-                  key ={city.id}
+                  key ={i}
                   city={city}
                   temp={city.temp}
                   pressure={city.pressure}

@@ -6,7 +6,7 @@ import {
   getLatLng,
 } from 'react-places-autocomplete';
 
-function CitySearch (weather) {
+function CitySearch ({weather}) {
   const [address, setAddress] =  React.useState("");
   // const handleSelect = async value =>{};
 
@@ -27,8 +27,8 @@ function CitySearch (weather) {
             />
             <div>
               {loading ? <div>...loading</div> : null}
-              {suggestions.map((suggestion) => {
-                return <div>{suggestion.description}</div>
+              {suggestions.map((suggestion, i) => {
+                return <div key={i}>{suggestion.description}</div>
               })}
             </div>
 
