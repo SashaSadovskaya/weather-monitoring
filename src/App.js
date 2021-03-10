@@ -3,6 +3,7 @@ import CityInfo from "./CityInfo";
 import React, {useState} from 'react';
 import {convertTime, convertWindDir} from "./utilities";
 import CitySearch from "./CitySearch";
+import Widget from "./Widget";
 
 
 function App() {
@@ -44,8 +45,26 @@ function App() {
     );
   }
 
+  let messageMin = 'Самая низкая температура';
+  let messageMax = 'Самая высокая температура';
+  let min = cities[0];
+  let max = cities[0];
+  for (let city of cities){
+    if (city.temp > max.temp){
+      max = city;
+      continue
+    }
+    if (city.temp < min.temp){
+      min = city
+    }
+  }
+
   return (
     <div className="App">
+      <div className= 'widget-container'>
+        <Widget message={messageMin} city={min} temp={min.temp}/>
+        <Widget message={messageMax} city={max} temp={max.temp}/>
+      </div>
       <div>
         <CitySearch weather={gettingWeather}/>
       </div>
