@@ -9,6 +9,7 @@ const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, ti
     setId(Math.round(Math.random()*100000));
   };
 
+
   const updateCity = () => {
     localStorage.setItem(city.city, JSON.stringify({
       'city': city.city,
@@ -21,6 +22,8 @@ const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, ti
     }));
     setId(Math.round(Math.random()*100000));
   };
+
+  setTimeout(updateCity,5000);
 
   return (
     <div>
