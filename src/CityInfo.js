@@ -23,7 +23,7 @@ const CityInfo =  ({city, temp, humidity, pressure, windForce, windDirection, ti
     setId(Math.round(Math.random()*100000));
   };
 
-  setTimeout(updateCity,100000);
+
 
   return (
     <div>
